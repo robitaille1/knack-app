@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CustomerSearch from './components/CustomerSearch/CustomerSearch'
+import Results from './components/Results/Results'
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <main className='App'>
         <CustomerSearch search={this.searchHandler} />
+        <Results customers={this.state.customers}/>
       </main>
     );
   }
