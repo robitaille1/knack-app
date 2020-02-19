@@ -30,8 +30,13 @@ class App extends Component {
       })
  };
 
-  render(){
+ searchQuery = (query) => {
+    this.setState({
+        searchQuery: query 
+    })
+ }
 
+  render(){
     return (
       <main className='App'>
         <CustomerSearch search={this.searchHandler} />
