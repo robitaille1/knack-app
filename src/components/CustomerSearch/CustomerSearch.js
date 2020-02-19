@@ -2,9 +2,9 @@ import React from 'react'
 
 const customerSearch = (props) => (
     <main>
-        <form>
+        <form onSubmit={props.search}>
             <input type='text'/>
-            <button type='submit'>Search</button>
+            <button>Search</button>
         </form>
     </main>
 )
