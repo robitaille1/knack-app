@@ -1,0 +1,22 @@
+.CustomerSearch {
+    background-color: rgb(190, 190, 190);
+    padding: 50px;
+}
+
+.CustomerSearch input {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.CustomerSearch button {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.Header {
+    margin-top: 0px;
+}

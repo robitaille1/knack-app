@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import CustomerSearch from './components/CustomerSearch/CustomerSearch'
 import Results from './components/Results/Results'
+import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customers: []
+      customers: [],
+      buttonClicked: false
     };
   }
 
@@ -28,6 +30,7 @@ class App extends Component {
       .then((records) => {
         const customers = records[0].records.filter(record => record.field_1_raw.last.includes(searchTerm));
         this.setState({customers});
+        this.setState({buttonClicked: true})
       })
  };
 
@@ -35,7 +38,7 @@ class App extends Component {
     return (
       <main className='App'>
         <CustomerSearch search={this.searchHandler} query={this.searchQuery} />
-        <Results customers={this.state.customers}/>
+        <Results clicked={this.state.buttonClicked} customers={this.state.customers}/>
       </main>
     );
   };
