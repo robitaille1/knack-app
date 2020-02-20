@@ -6,13 +6,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customers: [],
-      searchQuery: ''
+      customers: []
     };
   }
 
  searchHandler = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    const name = event.target['query'].value
+    const searchTerm = name.charAt(0).toUpperCase() + name.slice(1)
     fetch('https://api.knack.com/v1/pages/scene_1/views/view_2/records', {
       method: 'GET',
       headers: {
@@ -25,25 +26,19 @@ class App extends Component {
         return Promise.all([response.json()]);
       })
       .then((records) => {
-        const customers = records[0].records;
+        const customers = records[0].records.filter(record => record.field_1_raw.last.includes(searchTerm));
         this.setState({customers});
       })
  };
 
- searchQuery = (query) => {
-    this.setState({
-        searchQuery: query 
-    })
- }
-
   render(){
     return (
       <main className='App'>
-        <CustomerSearch search={this.searchHandler} />
+        <CustomerSearch search={this.searchHandler} query={this.searchQuery} />
         <Results customers={this.state.customers}/>
       </main>
     );
-  }
+  };
 }
 
 export default App;
